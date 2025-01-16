@@ -1,0 +1,53 @@
+
+/* Variables de ejemplo */
+$primary-color: #1b0b3b; /* Color principal del botón sólido */
+$text-color-light: #ffffff; /* Color del texto claro */
+
+/* Estilo base para botones */
+.button {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px; /* Inicialmente redondeado */
+    display: inline-block;
+
+    /* Botón sólido */
+    &--solid {
+        background-color: $primary-color;
+        color: $text-color-light;
+        border: none;
+
+        &:hover {
+            border-radius: 8px; /* Se hace casi cuadrado */
+            background-color: darken($primary-color, 10%); /* Oscurece el fondo */
+        }
+    }
+
+    /* Botón con solo bordes */
+    &--outline {
+        background-color: transparent;
+        color: $primary-color;
+        border: 2px solid $primary-color;
+
+        &:hover {
+            border-radius: 8px; /* Se hace casi cuadrado */
+            background-color: $primary-color;
+            color: $text-color-light; /* Cambia el texto a claro */
+        }
+    }
+
+    /* Botón sin fondo ni bordes */
+    &--text {
+        background-color: transparent;
+        color: inherit; /* Hereda el color del texto del contexto */
+        border: none;
+
+        &:hover {
+            /* Sin efecto hover */
+        }
+    }
+}

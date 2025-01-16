@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Desplegable</title>
+  <style>
+    /* Estilos básicos */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      background-color: #333;
+    }
+
+    .menu__item {
+      position: relative; /* Necesario para el posicionamiento del submenú */
+    }
+
+    .menu__link {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      background-color: #333;
+    }
+
+    .menu__link:hover {
+      background-color: #555;
+    }
+
+    /* Submenú */
+    .submenu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 100%; /* Debajo del elemento padre */
+      left: 0;
+      background-color: #444;
+      display: none; /* Ocultar el submenú inicialmente */
+    }
+
+    .submenu__item {
+      width: 200px; /* Ancho fijo para submenú */
+    }
+
+    .submenu__link {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      background-color: #444;
+    }
+
+    .submenu__link:hover {
+      background-color: #666;
+    }
+
+    /* Mostrar el submenú cuando se pasa el cursor */
+    .menu__item:hover .submenu {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li class="menu__item">
+      <a href="#" class="menu__link">Inicio</a>
+    </li>
+    <li class="menu__item">
+      <a href="#" class="menu__link">Servicios</a>
+      <ul class="submenu">
+        <li class="submenu__item"><a href="#" class="submenu__link">Diseño Web</a></li>
+        <li class="submenu__item"><a href="#" class="submenu__link">SEO</a></li>
+        <li class="submenu__item"><a href="#" class="submenu__link">Marketing</a></li>
+      </ul>
+    </li>
+    <li class="menu__item">
+      <a href="#" class="menu__link">Contacto</a>
+    </li>
+  </ul>
+</body>
+</html>
