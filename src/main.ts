@@ -1,24 +1,40 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+const menuItems = document.querySelectorAll('.menu-item--dropdown');
+const subMenus = document.querySelectorAll('.menu__submenu');
+
+
+function showSubmenu(index: number) {
+    subMenus.forEach((submenu, i) => {
+        if (i === index) {
+            submenu.style.display = 'block'; 
+        } else {
+            submenu.style.display = 'none';   
+        }
+    });
+}
+
+menuItems.forEach((item, index) => {
+    item.addEventListener('mouseenter', () => {
+        showSubmenu(index);  
+    });
+
+    item.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+            if (!item.matches(':hover') && !subMenus[index].matches(':hover')) {
+                subMenus[index].style.display = 'none'; 
+            }
+        }, 300);  
+    });
+});
+
+subMenus.forEach((submenu) => {
+    submenu.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+            if (!submenu.matches(':hover') && !menuItems[parseInt(submenu.getAttribute('data-submenu') || '0')].matches(':hover')) {
+                submenu.style.display = 'none';
+            }
+        }, 300);
+    });
+});
